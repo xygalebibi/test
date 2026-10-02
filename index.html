@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xyga Rathma — Designer</title>
+  <meta name="description" content="Portfolio of Xyga Rathma — brand, digital and visual design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Inter:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"><span>View</span></div>
+
+  <!-- ───────────── NAV ───────────── -->
+  <header class="nav">
+    <a href="#" class="nav__logo">xyga<span>*</span></a>
+    <nav class="nav__pill" aria-label="Primary">
+      <a href="#" class="is-active">Home</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="#contact" class="btn btn--yellow">Let’s talk</a>
+  </header>
+
+  <main>
+    <!-- ───────────── HERO ───────────── -->
+    <section class="hero">
+      <div class="hero__fluid" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="blob b3"></span>
+        <span class="blob b4"></span>
+        <span class="blob b5"></span>
+      </div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="hero__top">
+        <p class="eyebrow reveal">Designer &amp; art director — available for projects</p>
+        <p class="hero__intro reveal" style="--d:.15s">
+          I build brands, websites and visual systems that feel alive.
+          Bold where it counts, calm everywhere else.
+        </p>
+      </div>
+
+      <h1 class="hero__name" aria-label="Xyga Rathma">
+        <span class="line"><span class="word" data-split>Xyga</span></span>
+        <span class="line"><span class="word" data-split>Rathma</span></span>
+      </h1>
+
+      <!-- floating stickers, Giobi-style collage -->
+      <div class="stickers" aria-hidden="true">
+        <div class="sticker s1" data-depth="18"><div class="art art--a"></div></div>
+        <div class="sticker s2" data-depth="-24"><div class="art art--b"></div></div>
+        <div class="sticker s3" data-depth="30"><div class="art art--c"></div></div>
+        <div class="sticker s4 note" data-depth="-14">brand · web · motion</div>
+      </div>
+
+      <a href="#work" class="hero__scroll">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 4v16m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+    </section>
+
+    <!-- ───────────── CLIENTS MARQUEE ───────────── -->
+    <section class="clients" aria-label="Selected clients">
+      <div class="marquee">
+        <div class="marquee__track">
+          <span>Studio North</span><i>✺</i><span>Lumen</span><i>✺</i><span>Fieldwork</span><i>✺</i><span>Okto</span><i>✺</i><span>Paloma</span><i>✺</i><span>Arcadia</span><i>✺</i>
+          <span>Studio North</span><i>✺</i><span>Lumen</span><i>✺</i><span>Fieldwork</span><i>✺</i><span>Okto</span><i>✺</i><span>Paloma</span><i>✺</i><span>Arcadia</span><i>✺</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── WORK ───────────── -->
+    <section class="work" id="work">
+      <div class="section-head">
+        <h2 class="display reveal">Selected<br/>work</h2>
+        <p class="reveal" style="--d:.1s">A few projects I’m proud of — from identity systems to product launches. <a href="#" class="link">See the full archive →</a></p>
+      </div>
+
+      <article class="project reveal" data-cursor>
+        <a href="#" class="project__media">
+          <div class="art art--hero1"></div>
+          <span class="project__tag">Brand identity</span>
+          <h3 class="project__overlay">Bloom &amp; Co.</h3>
+        </a>
+        <div class="project__info">
+          <div>
+            <span class="meta">2025 — Skincare</span>
+            <h4>A soft-spoken identity for a loud generation</h4>
+          </div>
+          <p>Naming, identity, packaging and launch site for a botanical skincare line. A fluid colour system that shifts with every product.</p>
+        </div>
+      </article>
+
+      <div class="project-grid">
+        <article class="project project--sm reveal" data-cursor>
+          <a href="#" class="project__media">
+            <div class="art art--p2"></div>
+            <span class="project__tag">Web &amp; motion</span>
+          </a>
+          <div class="project__info">
+            <div><span class="meta">2025 — Fintech</span><h4>Okto Platform</h4></div>
+          </div>
+        </article>
+        <article class="project project--sm reveal" style="--d:.12s" data-cursor>
+          <a href="#" class="project__media">
+            <div class="art art--p3"></div>
+            <span class="project__tag">Editorial</span>
+          </a>
+          <div class="project__info">
+            <div><span class="meta">2024 — Culture</span><h4>Fieldwork Magazine</h4></div>
+          </div>
+        </article>
+      </div>
+
+      <article class="project project--wide reveal" data-cursor>
+        <a href="#" class="project__media project__media--strip">
+          <div class="art art--s1"></div>
+          <div class="art art--s2"></div>
+          <div class="art art--s3"></div>
+        </a>
+        <div class="project__info">
+          <div><span class="meta">2024 — Haircare</span><h4>Paloma — vibrant packaging</h4></div>
+          <p>Playful label shapes, each speaking to a different treatment. Function with a punch of personality.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ───────────── SERVICES ───────────── -->
+    <section class="services" id="services">
+      <h2 class="display display--light reveal">What I do</h2>
+      <ul class="services__list">
+        <li class="reveal"><span class="n">01</span><span class="t">Brand identity</span><span class="d">Strategy, naming, logo, visual systems</span><span class="chip c1"></span></li>
+        <li class="reveal"><span class="n">02</span><span class="t">Web design</span><span class="d">Websites, landing pages, Webflow builds</span><span class="chip c2"></span></li>
+        <li class="reveal"><span class="n">03</span><span class="t">Art direction</span><span class="d">Campaigns, shoots, social content</span><span class="chip c3"></span></li>
+        <li class="reveal"><span class="n">04</span><span class="t">Motion</span><span class="d">Logo animation, product films, UI motion</span><span class="chip c4"></span></li>
+      </ul>
+    </section>
+
+    <!-- ───────────── ABOUT ───────────── -->
+    <section class="about" id="about">
+      <h2 class="about__title" aria-label="About me">
+        <span class="line"><span class="word" data-split>About</span></span>
+        <span class="line"><span class="word" data-split>me</span></span>
+      </h2>
+      <div class="about__board">
+        <div class="pin p1" data-float><div class="art art--a"></div></div>
+        <div class="pin p2 note-card" data-float>You can’t be everything you want to be before your time.</div>
+        <div class="pin p3 portrait" data-float>
+          <div class="art art--portrait"></div>
+          <span class="hand">hi! that’s me ↖</span>
+        </div>
+        <div class="pin p4" data-float><div class="art art--c"></div></div>
+        <div class="about__text reveal">
+          <p>I’m Xyga — a multidisciplinary designer working with founders, studios and teams who want their work to feel a little more human.</p>
+          <p>I care about colour, rhythm and the tiny details that make people smile. When I’m not designing, I’m collecting matchboxes and bad film photos.</p>
+          <a href="#contact" class="btn btn--dark">Work with me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────────── CONTACT / FOOTER ───────────── -->
+  <footer class="contact" id="contact">
+    <div class="hero__fluid hero__fluid--footer" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b3"></span><span class="blob b5"></span>
+    </div>
+    <div class="contact__inner">
+      <p class="eyebrow reveal">Got a project in mind?</p>
+      <a href="mailto:hello@xygarathma.com" class="contact__big reveal">Let’s make<br/>something <em>lovely</em></a>
+      <div class="contact__row">
+        <a href="mailto:hello@xygarathma.com" class="btn btn--yellow btn--lg">hello@xygarathma.com</a>
+        <nav class="socials">
+          <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Behance</a>
+        </nav>
+      </div>
+    </div>
+    <div class="contact__foot">
+      <span>© <span id="year"></span> Xyga Rathma</span>
+      <span class="wordmark">xyga<span>*</span></span>
+      <a href="#" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
