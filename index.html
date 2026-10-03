@@ -7,7 +7,7 @@
   <meta name="description" content="Xygarathma is an art director and designer with 10 years of experience shaping memorable brands, events and digital experiences." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Inter:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,62 +15,66 @@
 
   <!-- ───────────── NAV ───────────── -->
   <header class="nav">
-    <a href="#" class="nav__logo">xyga<span>*</span></a>
-    <nav class="nav__pill" aria-label="Primary">
-      <a href="#" class="is-active">Home</a>
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-    </nav>
-    <a href="#contact" class="btn btn--yellow">Let’s talk</a>
+    <div class="nav__box">
+      <div class="nav__bar">
+        <a href="index.html" class="nav__logo">
+          <svg class="mark" viewBox="0 0 40 20" aria-hidden="true"><ellipse cx="12" cy="10" rx="7" ry="9"/><ellipse cx="20" cy="10" rx="7" ry="9"/><ellipse cx="28" cy="10" rx="7" ry="9"/></svg>
+          Xygarathma
+        </a>
+        <button class="nav__burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
+      </div>
+      <nav class="nav__menu" id="menu" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="about.html">About</a>
+        <a href="playground.html">Playground</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="nav__actions">
+      <a href="playground.html" class="btn btn--yellow">Playground</a>
+      <a href="contact.html" class="btn btn--orange">Let’s talk</a>
+    </div>
   </header>
 
   <main>
     <!-- ───────────── HERO ───────────── -->
     <section class="hero">
-      <div class="hero__fluid" aria-hidden="true">
-        <span class="blob b1"></span>
-        <span class="blob b2"></span>
-        <span class="blob b3"></span>
-        <span class="blob b4"></span>
-        <span class="blob b5"></span>
-      </div>
-      <div class="hero__grain" aria-hidden="true"></div>
-
-      <div class="hero__top">
-        <p class="eyebrow reveal">You can find my work<br/>in Apple stores worldwide</p>
-        <p class="hero__intro reveal" style="--d:.15s">
-          Art director &amp; designer with 10 years of experience shaping
-          memorable brands, events and digital experiences.
-        </p>
-      </div>
-
-      <h1 class="hero__name" aria-label="Xygarathma">
-        <span class="line"><span class="word" data-split>Xyga</span></span>
-        <span class="line"><span class="word" data-split>Rathma</span></span>
+      <h1 class="hero__title">
+        <span class="hero__lead load">You can find my work</span>
+        <span class="rotator load" style="--d:.15s" aria-live="polite"><span class="rotator__item is-current">in Apple stores worldwide</span></span>
       </h1>
-      <p class="say reveal" style="--d:.6s">[zai-ga-rath-ma]</p>
 
-      <!-- floating stickers, Giobi-style collage -->
-      <div class="stickers" aria-hidden="true">
-        <div class="sticker s1" data-depth="18"><img src="images/omvana.jpg" alt="" /></div>
-        <div class="sticker s2" data-depth="-24"><img src="images/projecttbc.jpg" alt="" /></div>
-        <div class="sticker s3" data-depth="30"><img src="images/deepsummit.jpg" alt="" /></div>
-        <div class="sticker s4 note" data-depth="-14">brands · events · apps</div>
+      <!-- curved 3D gallery (Melius-style); JS duplicates the cards to fill the ring -->
+      <div class="ring load" style="--d:.3s" aria-hidden="true">
+        <div class="ring__track">
+          <figure class="ring__card"><img src="images/states.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/quests.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/deepsummit.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/omvana.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/projecttbc.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/futurehuman.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/wethemany.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/xhai.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/lebibi.jpg" alt="" /></figure>
+          <figure class="ring__card"><img src="images/knowyournature.jpg" alt="" /></figure>
+        </div>
       </div>
 
-      <a href="#work" class="hero__scroll">
-        <span>Scroll</span>
-        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 4v16m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      </a>
+      <div class="hero__foot">
+        <p class="hero__sub load" style="--d:.45s">
+          <strong>Xygarathma</strong> <span class="say">[zai-ga-rath-ma]</span> is an art director &amp; designer
+          with 10 years of experience shaping memorable brands, events and digital experiences.
+        </p>
+        <a href="#work" class="btn btn--orange load" style="--d:.55s">See my work</a>
+      </div>
     </section>
 
-    <!-- ───────────── CLIENTS MARQUEE ───────────── -->
-    <section class="clients" aria-label="Recognition">
+    <!-- ───────────── RECOGNITION ───────────── -->
+    <section class="strip" aria-label="Recognition">
       <div class="marquee">
         <div class="marquee__track">
-          <span>Apple Store worldwide</span><i>✺</i><span>App Store feature</span><i>✺</i><span>Symbol Awards — Gold</span><i>✺</i><span>Best International Short Film</span><i>✺</i><span>11 Young Malaysians to Watch</span><i>✺</i>
-          <span>Apple Store worldwide</span><i>✺</i><span>App Store feature</span><i>✺</i><span>Symbol Awards — Gold</span><i>✺</i><span>Best International Short Film</span><i>✺</i><span>11 Young Malaysians to Watch</span><i>✺</i>
+          <span>Apple Store worldwide</span><i></i><span>App Store feature</span><i></i><span>Symbol Awards — Gold</span><i></i><span>Best International Short Film</span><i></i><span>11 Young Malaysians to Watch</span><i></i>
+          <span>Apple Store worldwide</span><i></i><span>App Store feature</span><i></i><span>Symbol Awards — Gold</span><i></i><span>Best International Short Film</span><i></i><span>11 Young Malaysians to Watch</span><i></i>
         </div>
       </div>
     </section>
@@ -78,146 +82,139 @@
     <!-- ───────────── WORK ───────────── -->
     <section class="work" id="work">
       <div class="section-head">
-        <h2 class="display reveal">Selected<br/>work</h2>
-        <p class="reveal" style="--d:.1s">Brands, products, books and stages for tens of thousands of people. Here are a few I’m proud of. <a href="https://www.xygarathma.com/playground" class="link">See the playground →</a></p>
+        <h2 class="display reveal">Selected <em>work</em></h2>
+        <div class="section-head__side reveal" style="--d:.1s">
+          <p class="caps">Brands / Products / Books / Stages</p>
+          <p>Ten years of work for teams around the world — here are a few I’m proud of.</p>
+        </div>
       </div>
 
-      <article class="project reveal" data-cursor>
-        <a href="https://www.xygarathma.com/states" class="project__media project__media--hero">
+      <!-- Feature, laid out like a poster -->
+      <article class="project project--feature reveal" data-cursor>
+        <a href="https://www.xygarathma.com/states" class="project__media">
           <img src="images/states.jpg" alt="States mood design kit: a box of colourful bottles" />
-          <span class="project__tag">Branding · Packaging · Experiential · Art direction</span>
+          <span class="dot" style="--x:12%;--y:-4%"></span>
+          <span class="dot" style="--x:96%;--y:58%"></span>
+          <span class="dot" style="--x:-2%;--y:94%"></span>
         </a>
-        <div class="project__info">
-          <div>
-            <span class="meta">Mindvalley — Mood design</span>
-            <h4>States</h4>
-          </div>
-          <p>A mood design brand with packaging and a companion app.</p>
+        <h3 class="project__vertical" aria-hidden="true">States</h3>
+        <div class="project__row">
+          <span class="num">01</span><span class="ellipse"></span><span class="num">Mindvalley</span>
+        </div>
+        <div class="project__text">
+          <h3 class="project__title">States</h3>
+          <p class="caps">Branding / Packaging / Experiential / Art direction</p>
+          <p class="project__desc">A mood design brand with packaging and a companion app.</p>
         </div>
       </article>
 
       <div class="project-grid">
-        <article class="project project--sm reveal" data-cursor>
+        <article class="project reveal" data-cursor>
           <a href="https://www.xygarathma.com/quests" class="project__media">
             <img src="images/quests.jpg" alt="Mindvalley Quests course covers" />
-            <span class="project__tag">Cover design · Art direction · Set design</span>
+            <span class="dot" style="--x:92%;--y:-5%"></span>
           </a>
-          <div class="project__info">
-            <div><span class="meta">Learning platform</span><h4>Mindvalley Quests</h4></div>
-            <p>An online learning platform, Apple demo app and airline entertainment feature.</p>
-          </div>
+          <div class="project__row"><span class="num">02</span><span class="ellipse"></span><h3 class="project__title">Mindvalley Quests</h3></div>
+          <p class="caps">Cover design / Art direction / Set design</p>
+          <p class="project__desc">An online learning platform, Apple demo app and airline entertainment feature.</p>
         </article>
-        <article class="project project--sm reveal" style="--d:.12s" data-cursor>
+        <article class="project reveal" style="--d:.12s" data-cursor>
           <a href="https://www.xygarathma.com/omvana" class="project__media">
             <img src="images/omvana.jpg" alt="OMVANA app on two phones" />
-            <span class="project__tag">Branding · Graphic design · UI</span>
+            <span class="dot" style="--x:4%;--y:90%"></span>
           </a>
-          <div class="project__info">
-            <div><span class="meta">App Store feature</span><h4>OMVANA</h4></div>
-            <p>A meditation and mindfulness app.</p>
-          </div>
+          <div class="project__row"><span class="num">03</span><span class="ellipse"></span><h3 class="project__title">OMVANA</h3></div>
+          <p class="caps">Branding / Graphic design / UI</p>
+          <p class="project__desc">A meditation and mindfulness app, featured on the App Store.</p>
         </article>
       </div>
 
-      <article class="project reveal" data-cursor>
-        <a href="https://www.xygarathma.com/futurehuman" class="project__media project__media--wide">
+      <article class="project project--wide reveal" data-cursor>
+        <a href="https://www.xygarathma.com/futurehuman" class="project__media">
           <img src="images/futurehuman.jpg" alt="Future Human conference stage in front of a large audience" />
-          <span class="project__tag">Print · Branding · Experiential design</span>
+          <span class="dot" style="--x:97%;--y:8%"></span>
+          <span class="dot" style="--x:40%;--y:100%"></span>
         </a>
-        <div class="project__info">
-          <div><span class="meta">Dubai, UAE</span><h4>Future Human</h4></div>
-          <p>A conference experience for 10,000 attendees.</p>
+        <div class="project__row"><span class="num">04</span><span class="ellipse"></span><h3 class="project__title">Future Human</h3></div>
+        <div class="project__split">
+          <p class="caps">Print / Branding / Experiential design / Dubai, UAE</p>
+          <p class="project__desc">A conference experience for 10,000 attendees.</p>
         </div>
       </article>
 
       <div class="project-grid">
-        <article class="project project--sm reveal" data-cursor>
+        <article class="project reveal" data-cursor>
           <a href="https://www.xygarathma.com/deepsummit" class="project__media">
             <img src="images/deepsummit.jpg" alt="Deep Summit logo on a glowing stage" />
-            <span class="project__tag">Branding · Print · Event</span>
           </a>
-          <div class="project__info">
-            <div><span class="meta">Event identity</span><h4>Deep Summit</h4></div>
-          </div>
+          <div class="project__row"><span class="num">05</span><span class="ellipse"></span><h3 class="project__title">Deep Summit</h3></div>
+          <p class="caps">Branding / Print / Event</p>
         </article>
-        <article class="project project--sm reveal" style="--d:.12s" data-cursor>
+        <article class="project reveal" style="--d:.12s" data-cursor>
           <a href="https://www.xygarathma.com/wethemany" class="project__media">
             <img src="images/wethemany.jpg" alt="We The Many book open on a green set" />
-            <span class="project__tag">Editorial · Information design · Book design</span>
+            <span class="dot" style="--x:94%;--y:96%"></span>
           </a>
-          <div class="project__info">
-            <div><span class="meta">Coffee table book</span><h4>We The Many</h4></div>
-            <p>A genealogy-based coffee table book.</p>
-          </div>
+          <div class="project__row"><span class="num">06</span><span class="ellipse"></span><h3 class="project__title">We The Many</h3></div>
+          <p class="caps">Editorial / Information design / Book design</p>
+          <p class="project__desc">A genealogy-based coffee table book.</p>
         </article>
       </div>
 
       <div class="soon reveal">
-        <span class="eyebrow">In the works</span>
+        <p class="caps">In the works</p>
         <ul>
           <li><a href="https://www.xygarathma.com/xhaistudios">Xhai Studio</a></li>
           <li><a href="https://www.xygarathma.com/lebibistoys">Lebibi’s Toys</a></li>
           <li><a href="https://www.xygarathma.com/knowyournature">Know Your Nature</a></li>
           <li><a href="https://www.xygarathma.com/projecttbc">Project TBC</a></li>
         </ul>
+        <a href="playground.html" class="link">More one-off work in the playground →</a>
       </div>
     </section>
 
     <!-- ───────────── SERVICES ───────────── -->
-    <section class="services" id="services">
-      <h2 class="display display--light reveal">What I do</h2>
-      <ul class="services__list">
-        <li class="reveal"><span class="n">01</span><span class="t">Branding</span><span class="d">Identity, packaging, brand systems</span><span class="chip c1"></span></li>
-        <li class="reveal"><span class="n">02</span><span class="t">Art direction</span><span class="d">Campaigns, covers, shoots, set design</span><span class="chip c2"></span></li>
-        <li class="reveal"><span class="n">03</span><span class="t">Experiential</span><span class="d">Events and stages for thousands of people</span><span class="chip c3"></span></li>
-        <li class="reveal"><span class="n">04</span><span class="t">Digital &amp; UI</span><span class="d">Apps, web, motion and 3D</span><span class="chip c4"></span></li>
-        <li class="reveal"><span class="n">05</span><span class="t">Editorial</span><span class="d">Books, print, information design</span><span class="chip c1"></span></li>
-      </ul>
-    </section>
-
-    <!-- ───────────── ABOUT ───────────── -->
-    <section class="about" id="about">
-      <h2 class="about__title" aria-label="About me">
-        <span class="line"><span class="word" data-split>About</span></span>
-        <span class="line"><span class="word" data-split>me</span></span>
-      </h2>
-      <div class="about__board">
-        <div class="pin p1" data-float><img src="images/quests.jpg" alt="" /></div>
-        <div class="pin p2 note-card" data-float>published novelist — two books &amp; counting ✎</div>
-        <div class="pin p3 portrait" data-float>
-          <div class="art art--portrait"></div>
-          <span class="hand">hi! that’s me ↖</span>
-        </div>
-        <div class="pin p4" data-float><img src="images/wethemany.jpg" alt="" /></div>
-        <div class="about__text reveal">
-          <p>Hi, I’m Xygarathma — an art director and designer who grew up among the vibrant landscapes of Malaysia.</p>
-          <p>For 10 years I’ve worked across web and print, branding, events and set design, with a degree in animation and a soft spot for 3D. My work has won a Symbol Award Gold and Best International Short Film, and appears in Apple stores worldwide.</p>
-          <p>Off the clock: jewellery making, hiking, gaming, and the weird and wonderful sides of life.</p>
-          <a href="https://www.xygarathma.com/about" class="btn btn--dark">More about me</a>
-        </div>
+    <section class="services">
+      <div class="section-head">
+        <h2 class="display reveal">What I <em>do</em></h2>
+        <p class="caps reveal" style="--d:.1s">10 years / Web &amp; print / Events &amp; sets</p>
       </div>
+      <ul class="services__list">
+        <li class="reveal"><span class="num">01</span><span class="t">Branding</span><span class="caps">Identity / Packaging / Brand systems</span></li>
+        <li class="reveal"><span class="num">02</span><span class="t">Art direction</span><span class="caps">Campaigns / Covers / Set design</span></li>
+        <li class="reveal"><span class="num">03</span><span class="t">Experiential</span><span class="caps">Events &amp; stages for thousands</span></li>
+        <li class="reveal"><span class="num">04</span><span class="t">Digital &amp; UI</span><span class="caps">Apps / Web / Motion / 3D</span></li>
+        <li class="reveal"><span class="num">05</span><span class="t">Editorial</span><span class="caps">Books / Print / Information design</span></li>
+      </ul>
     </section>
   </main>
 
-  <!-- ───────────── CONTACT / FOOTER ───────────── -->
-  <footer class="contact" id="contact">
-    <div class="hero__fluid hero__fluid--footer" aria-hidden="true">
-      <span class="blob b1"></span><span class="blob b3"></span><span class="blob b5"></span>
+  <!-- ───────────── FOOTER (poster's orange block) ───────────── -->
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="contact.html" class="footer__big">Let’s make something <em>together</em></a>
+      <svg class="rings" viewBox="0 0 160 120" aria-hidden="true">
+        <ellipse cx="50" cy="60" rx="34" ry="56"/><ellipse cx="65" cy="60" rx="34" ry="56"/><ellipse cx="80" cy="60" rx="34" ry="56"/><ellipse cx="95" cy="60" rx="34" ry="56"/><ellipse cx="110" cy="60" rx="34" ry="56"/>
+      </svg>
     </div>
-    <div class="contact__inner">
-      <p class="eyebrow reveal">Got a project in mind?</p>
-      <a href="mailto:xygarathmadesign@gmail.com" class="contact__big reveal">Let’s make<br/>something <em>lovely</em></a>
-      <div class="contact__row">
-        <a href="mailto:xygarathmadesign@gmail.com" class="btn btn--yellow btn--lg">xygarathmadesign@gmail.com</a>
-        <nav class="socials">
-          <!-- TODO: add your Behance and LinkedIn URLs -->
-          <a href="#">Behance</a><a href="#">LinkedIn</a>
-        </nav>
+    <div class="footer__cols">
+      <div>
+        <p class="caps">Say hello</p>
+        <a href="mailto:xygarathmadesign@gmail.com" class="footer__mail">xygarathmadesign@gmail.com</a>
       </div>
+      <nav aria-label="Pages">
+        <p class="caps">Pages</p>
+        <a href="#work">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a>
+      </nav>
+      <nav aria-label="Social">
+        <p class="caps">Elsewhere</p>
+        <!-- TODO: add your Behance and LinkedIn URLs -->
+        <a href="#">Behance</a><a href="#">LinkedIn</a>
+      </nav>
     </div>
-    <div class="contact__foot">
+    <div class="footer__base">
       <span>© <span id="year"></span> Xygarathma</span>
-      <span class="wordmark">xyga<span>*</span></span>
+      <span class="caps">Art direction / Design / Malaysia</span>
       <a href="#" class="link">Back to top ↑</a>
     </div>
   </footer>
