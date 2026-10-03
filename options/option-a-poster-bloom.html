@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xygarathma — Option A: Poster Bloom</title>
+  <meta name="description" content="Xygarathma is an art director and designer with 10 years of experience shaping memorable brands, events and digital experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    /* Option A — Keto's colour-bloom hero + the exhibition poster's type, dots and orange block */
+    :root {
+      --bg: #e9e7e2; --ink: #141414; --soft: #5d5a54; --line: rgba(20,20,20,.2);
+      --deep: #0d2a29; --orange: #ff4a1c; --yellow: #fcf281;
+      --sky: #9fd3ff; --peri: #7f8cff; --sage: #7fbf9a; --amber: #ffa53b;
+      --serif: "Instrument Serif", "Times New Roman", serif;
+      --sans: "Inter", system-ui, sans-serif;
+    }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+    .caps { font-style: italic; font-weight: 500; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+    .btn { display: inline-flex; padding: 12px 22px; border-radius: 999px; font-size: 14px; font-weight: 500; transition: transform .4s var(--ease); }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--yellow { background: var(--yellow); color: var(--ink); }
+
+    /* nav (Keto) */
+    .nav { position: absolute; inset: 0 0 auto; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 22px var(--gutter); color: #fff; }
+    .nav__logo { font-weight: 600; font-size: 20px; letter-spacing: -.01em; }
+    .nav__pill { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.85); backdrop-filter: blur(12px); }
+    .nav__pill a { color: var(--ink); padding: 9px 20px; border-radius: 999px; font-size: 14px; font-weight: 500; transition: background .3s; }
+    .nav__pill a:hover { background: rgba(0,0,0,.06); }
+    .nav__pill a.is-active { background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.1); }
+
+    /* hero */
+    .hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      min-height: 100svh; padding: 120px var(--gutter) 48px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--deep); color: #fff;
+      border-radius: 0 0 48px 48px;
+    }
+    .b1 { width: 48vw; height: 48vw; left: -6%; top: 30%; background: var(--sky); animation-duration: 26s; }
+    .b2 { width: 38vw; height: 38vw; left: 28%; top: -8%; background: var(--peri); animation-duration: 19s; animation-delay: -6s; }
+    .b3 { width: 44vw; height: 44vw; right: -4%; bottom: -14%; background: var(--amber); animation-duration: 23s; animation-delay: -3s; }
+    .b4 { width: 26vw; height: 26vw; left: 46%; bottom: 4%; background: var(--orange); animation-duration: 17s; animation-delay: -9s; }
+    .b5 { width: 30vw; height: 30vw; right: 6%; top: 4%; background: var(--yellow); opacity: .7; animation-duration: 28s; animation-delay: -12s; }
+    .hero__top { display: flex; justify-content: space-between; gap: 40px; align-items: flex-start; }
+    .hero__intro { max-width: 34ch; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.45; }
+    .hero__name {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(56px, 21.5vw, 400px); line-height: .82; letter-spacing: -.03em; white-space: nowrap;
+      margin: 4vh 0 0 -.04em;
+    }
+    .hero__name .ch { display: inline-block; transform: translateY(100%); opacity: 0; transition: transform 1.2s var(--ease), opacity 1.2s var(--ease); transition-delay: calc(var(--i) * 40ms + .1s); }
+    .is-loaded .hero__name .ch { transform: none; opacity: 1; }
+    .hero__line { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); margin-top: clamp(14px, 3.7vw, 68px); flex-wrap: wrap; }
+    .hero__line .lead { font-family: var(--serif); font-size: clamp(26px, 3.4vw, 54px); line-height: 1; }
+    .ellipse { flex: 1; min-width: 40px; max-width: 220px; height: 18px; border: 1px solid currentColor; border-radius: 50%; }
+    .rotator { font-family: var(--serif); font-style: italic; font-size: clamp(30px, 4.4vw, 70px); line-height: 1; color: var(--yellow); padding-bottom: .1em; }
+    .rotator__item { white-space: nowrap; }
+    .hero .dot {
+      position: absolute; z-index: 1; border-radius: 50%; background: var(--orange);
+      width: clamp(36px, 5vw, 76px); aspect-ratio: 1;
+      transform: translate(var(--mx, 0), var(--my, 0)); transition: transform 1.2s var(--ease);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,.4);
+    }
+    .hero .d1 { left: 58%; top: 22%; } .hero .d2 { right: 8%; top: 52%; } .hero .d3 { left: 9%; top: 42%; }
+
+    /* recognition */
+    .strip { border-bottom: 1px solid var(--line); padding: 22px 0; margin-top: 40px; }
+    .marquee__track { font-family: var(--serif); font-style: italic; font-size: clamp(24px, 2.4vw, 34px); }
+    .marquee__track i { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); flex: none; }
+
+    /* work */
+    .work { padding: clamp(80px, 10vw, 130px) var(--gutter) 40px; max-width: 1440px; margin: 0 auto; }
+    .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(40px, 5vw, 72px); }
+    .display { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 9vw, 150px); line-height: .9; letter-spacing: -.025em; }
+    .display em { color: var(--orange); }
+    .project { margin-bottom: clamp(56px, 7vw, 100px); }
+    .media { display: block; position: relative; aspect-ratio: 4 / 3; }
+    .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; transition: transform 1.2s var(--ease), border-radius 1.2s var(--ease); }
+    .project:hover .media img { transform: scale(.985); border-radius: 28px; }
+    .media .pdot { position: absolute; left: var(--x); top: var(--y); width: clamp(28px, 3.6vw, 52px); aspect-ratio: 1; border-radius: 50%; background: var(--orange); transform: translate(-50%, -50%) scale(0); transition: transform 1s var(--ease) .3s; }
+    .project.is-in .pdot { transform: translate(-50%, -50%) scale(1); }
+    .row { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+    .num { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 40px); line-height: 1; }
+    .row .ellipse { max-width: none; height: 16px; transition: transform 1s var(--ease); }
+    .project:hover .row .ellipse { transform: scaleY(1.6); }
+    .title { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.2vw, 50px); line-height: 1; }
+    .project .caps { margin-top: 12px; }
+    .desc { margin-top: 8px; color: var(--soft); max-width: 44ch; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 48px); }
+    .grid .project:nth-child(2) { margin-top: clamp(0px, 8vw, 120px); }
+    .feature { display: grid; grid-template-columns: 1fr auto; column-gap: clamp(16px, 2.5vw, 40px); }
+    .feature .media { aspect-ratio: 16 / 10; }
+    .vertical { grid-column: 2; grid-row: 1 / span 3; writing-mode: vertical-rl; font-family: var(--serif); font-weight: 400; text-transform: uppercase; font-size: clamp(90px, 13vw, 210px); line-height: .8; }
+    .wide .media { aspect-ratio: 16 / 7.5; }
+    .soon { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; border-top: 1px solid var(--line); padding-top: 28px; }
+    .soon ul { display: flex; flex-wrap: wrap; gap: 8px; }
+    .soon a { display: inline-block; padding: 7px 16px; border: 1px solid var(--ink); border-radius: 50%; font-family: var(--serif); font-size: 20px; transition: background .3s, color .3s, border-color .3s; }
+    .soon a:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+    /* footer */
+    .footer { background: var(--orange); padding: clamp(56px, 8vw, 110px) var(--gutter) 24px; margin-top: clamp(40px, 6vw, 80px); }
+    .footer__top { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+    .footer__big { font-family: var(--serif); font-size: clamp(52px, 8.5vw, 140px); line-height: .92; max-width: 11ch; }
+    .footer__big em { color: #fff; }
+    .rings { width: clamp(120px, 16vw, 220px); flex: none; fill: none; stroke: var(--ink); stroke-width: 1; overflow: visible; }
+    .rings ellipse { transform-box: fill-box; transform-origin: center; animation: breathe 6s ease-in-out infinite; }
+    .rings ellipse:nth-child(2) { animation-delay: -1.2s; } .rings ellipse:nth-child(3) { animation-delay: -2.4s; }
+    .rings ellipse:nth-child(4) { animation-delay: -3.6s; } .rings ellipse:nth-child(5) { animation-delay: -4.8s; }
+    @keyframes breathe { 50% { transform: scaleX(.55); } }
+    .footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 56px; padding-top: 20px; border-top: 1px solid rgba(20,20,20,.35); font-size: 14px; }
+    .footer__base nav { display: flex; gap: 20px; }
+    .cursor { background: var(--orange); color: #fff; }
+
+    @media (max-width: 800px) {
+      .nav { flex-wrap: wrap; row-gap: 14px; }
+      .nav__pill { order: 3; width: 100%; justify-content: space-between; }
+      .nav__pill a { padding: 8px 12px; font-size: 13px; }
+      .hero { padding-top: 160px; }
+      .hero .d1 { left: auto; right: 6%; top: 34%; }
+      .hero__top { flex-direction: column; gap: 16px; }
+      .rotator__item { white-space: normal; }
+      .hero__line .ellipse { display: none; }
+      .grid { grid-template-columns: 1fr; gap: 0; }
+      .grid .project:nth-child(2) { margin-top: 0; }
+      .feature { grid-template-columns: 1fr; }
+      .vertical { display: none; }
+      .wide .media { aspect-ratio: 4 / 3; }
+      .footer__top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" aria-hidden="true">View</div>
+
+  <header class="nav">
+    <a href="#" class="nav__logo">Xygarathma</a>
+    <nav class="nav__pill" aria-label="Primary">
+      <a href="#" class="is-active">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn--yellow">Let’s talk</a>
+  </header>
+
+  <section class="hero">
+    <div class="fluid" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span><span class="blob b5"></span></div>
+    <div class="grain" aria-hidden="true"></div>
+    <span class="dot d1" data-depth="30" aria-hidden="true"></span>
+    <span class="dot d2" data-depth="-24" aria-hidden="true"></span>
+    <span class="dot d3" data-depth="18" aria-hidden="true"></span>
+
+    <div class="hero__top">
+      <p class="caps load">Art director &amp; designer<br />[zai-ga-rath-ma]</p>
+      <p class="hero__intro load" style="--d:.1s">10 years of shaping memorable brands, events and digital experiences — for teams around the world.</p>
+    </div>
+    <div>
+      <h1 class="hero__name" data-split>Xygarathma</h1>
+      <p class="hero__line load" style="--d:.6s">
+        <span class="lead">You can find my work</span><span class="ellipse" aria-hidden="true"></span>
+        <span class="rotator" aria-live="polite"><span class="rotator__item">in Apple stores worldwide</span></span>
+      </p>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Recognition">
+    <div class="marquee"><div class="marquee__track">
+      <span>Apple Store worldwide</span><i></i><span>App Store feature</span><i></i><span>Symbol Awards — Gold</span><i></i><span>Best International Short Film</span><i></i><span>11 Young Malaysians to Watch</span><i></i>
+      <span>Apple Store worldwide</span><i></i><span>App Store feature</span><i></i><span>Symbol Awards — Gold</span><i></i><span>Best International Short Film</span><i></i><span>11 Young Malaysians to Watch</span><i></i>
+    </div></div>
+  </section>
+
+  <main class="work" id="work">
+    <div class="head">
+      <h2 class="display reveal">Selected <em>work</em></h2>
+      <p class="caps reveal" style="--d:.1s">Brands / Products / Books / Stages</p>
+    </div>
+
+    <article class="project feature reveal">
+      <a href="https://www.xygarathma.com/states" class="media" data-cursor>
+        <img src="../images/states.jpg" alt="States mood design kit" />
+        <span class="pdot" style="--x:12%;--y:-3%"></span><span class="pdot" style="--x:97%;--y:60%"></span><span class="pdot" style="--x:-1%;--y:94%"></span>
+      </a>
+      <h3 class="vertical" aria-hidden="true">States</h3>
+      <div class="row"><span class="num">01</span><span class="ellipse"></span><h3 class="title">States</h3></div>
+      <p class="caps">Mindvalley / Branding / Packaging / Experiential / Art direction</p>
+      <p class="desc">A mood design brand with packaging and a companion app.</p>
+    </article>
+
+    <div class="grid">
+      <article class="project reveal">
+        <a href="https://www.xygarathma.com/quests" class="media" data-cursor><img src="../images/quests.jpg" alt="Mindvalley Quests covers" /><span class="pdot" style="--x:92%;--y:-4%"></span></a>
+        <div class="row"><span class="num">02</span><span class="ellipse"></span><h3 class="title">Mindvalley Quests</h3></div>
+        <p class="caps">Cover design / Art direction / Set design</p>
+        <p class="desc">An online learning platform, Apple demo app and airline entertainment feature.</p>
+      </article>
+      <article class="project reveal" style="--d:.12s">
+        <a href="https://www.xygarathma.com/omvana" class="media" data-cursor><img src="../images/omvana.jpg" alt="OMVANA app" /><span class="pdot" style="--x:4%;--y:90%"></span></a>
+        <div class="row"><span class="num">03</span><span class="ellipse"></span><h3 class="title">OMVANA</h3></div>
+        <p class="caps">Branding / Graphic design / UI</p>
+        <p class="desc">A meditation and mindfulness app, featured on the App Store.</p>
+      </article>
+    </div>
+
+    <article class="project wide reveal">
+      <a href="https://www.xygarathma.com/futurehuman" class="media" data-cursor><img src="../images/futurehuman.jpg" alt="Future Human stage" /><span class="pdot" style="--x:97%;--y:8%"></span></a>
+      <div class="row"><span class="num">04</span><span class="ellipse"></span><h3 class="title">Future Human</h3></div>
+      <p class="caps">Print / Branding / Experiential design / Dubai, UAE</p>
+      <p class="desc">A conference experience for 10,000 attendees.</p>
+    </article>
+
+    <div class="grid">
+      <article class="project reveal">
+        <a href="https://www.xygarathma.com/deepsummit" class="media" data-cursor><img src="../images/deepsummit.jpg" alt="Deep Summit stage" /></a>
+        <div class="row"><span class="num">05</span><span class="ellipse"></span><h3 class="title">Deep Summit</h3></div>
+        <p class="caps">Branding / Print / Event</p>
+      </article>
+      <article class="project reveal" style="--d:.12s">
+        <a href="https://www.xygarathma.com/wethemany" class="media" data-cursor><img src="../images/wethemany.jpg" alt="We The Many book" /><span class="pdot" style="--x:94%;--y:96%"></span></a>
+        <div class="row"><span class="num">06</span><span class="ellipse"></span><h3 class="title">We The Many</h3></div>
+        <p class="caps">Editorial / Information design / Book design</p>
+        <p class="desc">A genealogy-based coffee table book.</p>
+      </article>
+    </div>
+
+    <div class="soon reveal">
+      <p class="caps">In the works</p>
+      <ul><li><a href="https://www.xygarathma.com/xhaistudios">Xhai Studio</a></li><li><a href="https://www.xygarathma.com/lebibistoys">Lebibi’s Toys</a></li><li><a href="https://www.xygarathma.com/knowyournature">Know Your Nature</a></li><li><a href="https://www.xygarathma.com/projecttbc">Project TBC</a></li></ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="contact.html" class="footer__big">Let’s make something <em>together</em></a>
+      <svg class="rings" viewBox="0 0 160 120" aria-hidden="true"><ellipse cx="50" cy="60" rx="34" ry="56"/><ellipse cx="65" cy="60" rx="34" ry="56"/><ellipse cx="80" cy="60" rx="34" ry="56"/><ellipse cx="95" cy="60" rx="34" ry="56"/><ellipse cx="110" cy="60" rx="34" ry="56"/></svg>
+    </div>
+    <div class="footer__base">
+      <a href="mailto:xygarathmadesign@gmail.com">xygarathmadesign@gmail.com</a>
+      <nav aria-label="Pages"><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a><a href="#">Behance</a><a href="#">LinkedIn</a></nav>
+      <span>© <span id="year"></span> Xygarathma</span>
+    </div>
+  </footer>
+
+  <script>
+    // split the name into letters for the rise-in
+    document.querySelectorAll("[data-split]").forEach((el) => {
+      const t = el.textContent; el.setAttribute("aria-label", t); el.textContent = "";
+      [...t].forEach((c, i) => { const s = document.createElement("span"); s.className = "ch"; s.textContent = c; s.style.setProperty("--i", i); s.setAttribute("aria-hidden", "true"); el.appendChild(s); });
+    });
+  </script>
+  <script src="common.js"></script>
+</body>
+</html>
