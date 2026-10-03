@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xygarathma — Option D: Electric</title>
+  <meta name="description" content="Xygarathma is an art director and designer with 10 years of experience shaping memorable brands, events and digital experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Inter+Tight:ital,wght@0,400;0,500;1,700;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    /* Option D — after leeroy.ca: black + electric blue, hairline serif, tiny caps, stepped buttons,
+       sliced images; work shown in the two-column grid from xygarathma.com */
+    :root {
+      --black: #050608; --ink: #121319; --navy: #242733;
+      --blue: #3971ff; --blue-2: #6b95ff; --lilac: #b7aaff;
+      --grey: #f0f1f5; --grey-2: #e6e7eb; --mute: #7b7e8c; --white: #fff;
+      --serif: "Newsreader", "Times New Roman", serif;
+      --sans: "Inter Tight", system-ui, sans-serif;
+    }
+    body { background: var(--white); color: var(--ink); font-family: var(--sans); font-size: 15px; }
+    .caps { font-size: 13px; font-weight: 400; letter-spacing: .01em; text-transform: uppercase; }
+    .serif { font-family: var(--serif); font-weight: 300; font-variation-settings: "opsz" 72; letter-spacing: -.035em; }
+
+    /* ── stepped button (Leeroy's notched block) ── */
+    .step {
+      --bg: var(--white); --fg: var(--ink); --n: 10px;
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      padding: 9px 26px; background: var(--bg); color: var(--fg);
+      font-size: 13px; text-transform: uppercase; letter-spacing: .01em; white-space: nowrap;
+      transition: color .3s;
+    }
+    .step::before, .step::after {
+      content: ""; position: absolute; width: var(--n); height: 62%; background: var(--bg);
+      transition: transform .5s var(--ease);
+    }
+    .step::before { left: calc(var(--n) * -1); bottom: 0; }
+    .step::after  { right: calc(var(--n) * -1); top: -38%; }
+    .step:hover::before { transform: translateY(-38%); }
+    .step:hover::after  { transform: translateY(38%); }
+    .step--dark { --bg: var(--ink); --fg: #fff; }
+    .step--blue { --bg: var(--blue); --fg: #fff; }
+
+    /* ── sliced image (the glitchy image chips inside Leeroy's headline) ── */
+    .slices { position: relative; display: inline-grid; place-items: center; width: var(--w, 3.4em); height: .62em; vertical-align: .12em; margin: 0 .3em; }
+    .slices i {
+      position: absolute; left: 0; right: 0; height: 34%;
+      background-image: var(--img); background-size: cover; background-position: center var(--bp, 50%);
+      transform: translateX(var(--sx, 0)); transition: transform .8s var(--ease);
+    }
+    .slices i:nth-child(1) { top: 0;   --sx: 7%; --bp: 20%; }
+    .slices i:nth-child(2) { top: 33%; --sx: 4%; --bp: 50%; }
+    .slices i:nth-child(3) { top: 66%; --sx: -5%; --bp: 80%; }
+    .slices:hover i { --sx: 0; }
+    .slices span { position: relative; z-index: 1; font-family: var(--sans); font-size: 13px; letter-spacing: .01em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+    .slices.is-idle i { animation: jitter 6s steps(1) infinite; }
+    .slices.is-idle i:nth-child(2) { animation-delay: -2s; }
+    .slices.is-idle i:nth-child(3) { animation-delay: -4s; }
+    @keyframes jitter { 0%, 88%, 100% { translate: 0; } 90% { translate: 6% 0; } 93% { translate: -4% 0; } 96% { translate: 2% 0; } }
+
+    /* ── nav ── */
+    .nav { position: absolute; inset: 0 0 auto; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 26px clamp(16px, 2vw, 28px); color: #fff; }
+    .nav__logo { font-weight: 800; font-style: italic; font-size: 24px; letter-spacing: -.04em; }
+    .nav__links { display: flex; gap: clamp(28px, 5vw, 76px); }
+    .nav__links a { position: relative; }
+    .nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .5s var(--ease); }
+    .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav .step { justify-self: end; margin-right: 10px; }
+
+    /* ── hero ── */
+    .hero { position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; background: var(--black); color: #f3f4f8; padding: 140px clamp(16px, 2vw, 28px) clamp(40px, 6vh, 72px); display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero .fluid { filter: blur(60px); inset: -15%; }
+    .hero .blob { mix-blend-mode: screen; opacity: 1; animation-name: wave; }
+    .e1 { width: 34vw; height: 120vh; left: 4%; top: -10%; background: var(--blue); border-radius: 45%; animation-duration: 24s; }
+    .e2 { width: 60vw; height: 22vw; right: -14%; top: 34%; background: var(--blue); border-radius: 50%; animation-duration: 19s; animation-delay: -7s; }
+    .e3 { width: 30vw; height: 30vw; left: 38%; bottom: -14%; background: var(--blue-2); opacity: .7 !important; animation-duration: 28s; animation-delay: -3s; }
+    @keyframes wave {
+      0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+      50%  { transform: translate(8vw, -4vh) rotate(18deg) scale(1.12, .9); }
+      100% { transform: translate(-6vw, 6vh) rotate(-12deg) scale(.95, 1.1); }
+    }
+    .hero .grain { opacity: .14; }
+    .hero__name { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .hero__name h1 { font-size: clamp(60px, 15.2vw, 280px); line-height: .8; margin-left: -.04em; white-space: nowrap; }
+    .hero__name h1 .ch { display: inline-block; clip-path: inset(0 0 100% 0); transform: translateY(18%); transition: clip-path 1.2s var(--ease), transform 1.2s var(--ease); transition-delay: calc(var(--i) * 45ms + .15s); }
+    .is-loaded .hero__name h1 .ch { clip-path: inset(-10% -10% -30% -10%); transform: none; }
+    .hero__name .caps { padding-bottom: 2.2vw; text-align: right; line-height: 1.25; }
+    .hero__line { font-size: clamp(36px, 6.4vw, 112px); line-height: 1; margin-top: clamp(10px, 2vw, 26px); }
+    .hero__line .slices { --w: 3.2em; }
+    .rotator { font-style: italic; color: #fff; }
+    .rotator__item { white-space: nowrap; }
+    .rotator__item::after { content: "."; font-style: normal; }
+
+    /* ── featured: full-bleed image + centred statement + glass panel ── */
+    .feature { position: relative; isolation: isolate; overflow: hidden; background: var(--black); min-height: 112vh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: clamp(80px, 12vh, 140px) 16px clamp(40px, 6vh, 70px); color: #fff; text-align: center; }
+    .feature__bg { position: absolute; inset: -6% 0; z-index: -1; }
+    .feature__bg img { width: 100%; height: 100%; object-fit: cover; transform: translateY(var(--par, 0)); }
+    .feature__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,6,8,.35), rgba(5,6,8,.05) 45%, rgba(5,6,8,.25)); }
+    .feature h2 { font-size: clamp(40px, 5.2vw, 84px); line-height: 1; max-width: 13ch; margin-bottom: 30px; }
+    .panel { display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); gap: 4px; width: min(900px, 100%); padding: 4px; background: rgba(240,241,245,.82); backdrop-filter: blur(14px); color: var(--ink); text-align: left; }
+    .panel__text { padding: 26px 26px 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+    .panel__text h3 { font-size: clamp(20px, 1.8vw, 26px); line-height: 1.1; }
+    .panel__text .caps:last-child { color: var(--mute); }
+    .panel img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+    .panel a.thumb { overflow: hidden; display: block; }
+    .panel a.thumb img { transition: transform 1.2s var(--ease); }
+    .panel a.thumb:hover img { transform: scale(1.06); }
+
+    /* ── work grid (as on xygarathma.com: two columns, near full-bleed) ── */
+    .work { padding: clamp(70px, 9vw, 120px) 6px 40px; }
+    .work__head { display: flex; justify-content: space-between; align-items: baseline; padding: 0 clamp(10px, 1.4vw, 22px) clamp(28px, 3vw, 44px); }
+    .work__head h2 { font-size: clamp(44px, 5vw, 80px); line-height: 1; }
+    .work__head a { text-decoration: underline; text-underline-offset: 3px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 5vw, 80px) 16px; }
+    .tile__img { display: block; position: relative; overflow: hidden; aspect-ratio: 707 / 409; background: var(--grey-2); clip-path: inset(0 0 100% 0); transition: clip-path 1.3s var(--ease); }
+    .tile.is-in .tile__img { clip-path: inset(0); }
+    .tile__img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 1.6s var(--ease); }
+    .tile.is-in .tile__img img { transform: scale(1); }
+    .tile:hover .tile__img img { transform: scale(1.04); }
+    .tile__img .step { position: absolute; left: 24px; bottom: 18px; opacity: 0; transform: translateY(10px); transition: opacity .4s, transform .6s var(--ease); }
+    .tile:hover .tile__img .step { opacity: 1; transform: none; }
+    .tile__cap { display: grid; grid-template-columns: 1fr auto; gap: 4px 24px; padding: 16px clamp(10px, 1.4vw, 22px) 0; }
+    .tile__cap h3 { font-size: clamp(24px, 2.2vw, 34px); line-height: 1.05; }
+    .tile__cap p { grid-column: 1; color: var(--navy); max-width: 48ch; }
+    .tile__cap .caps { grid-column: 2; grid-row: 1 / span 2; color: var(--mute); text-align: right; max-width: 22ch; line-height: 1.35; }
+    .tile .reveal, .tile { transition-delay: var(--d, 0s); }
+
+    /* ── lilac: services ── */
+    .lilac { position: relative; overflow: hidden; background: var(--lilac); padding: clamp(90px, 12vw, 170px) 16px; text-align: center; }
+    .lilac svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--ink); stroke-width: 1; pointer-events: none; }
+    .lilac path { stroke-dasharray: 1; stroke-dashoffset: var(--draw, 1); }
+    .lilac h2 { position: relative; font-size: clamp(40px, 5.2vw, 84px); line-height: 1; max-width: 15ch; margin: 0 auto; }
+    .lilac__img { position: relative; width: min(520px, 80%); aspect-ratio: 4 / 3; margin: 40px auto 0; border-radius: 22%/30%; overflow: hidden; }
+    .lilac__img img { width: 100%; height: 100%; object-fit: cover; }
+    .tags { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 30px; margin-top: 46px; }
+
+    /* ── blue: recognition list ── */
+    .blue { position: relative; isolation: isolate; overflow: hidden; background: var(--black); color: #fff; padding: clamp(90px, 11vw, 160px) clamp(16px, 2vw, 28px) clamp(60px, 8vw, 120px); }
+    .blue .fluid { filter: blur(70px); }
+    .blue .blob { mix-blend-mode: screen; animation-name: wave; }
+    .f1 { width: 70vw; height: 40vw; left: -10%; top: 6%; background: var(--blue); border-radius: 50%; animation-duration: 26s; }
+    .f2 { width: 40vw; height: 60vw; right: -8%; bottom: -20%; background: var(--blue); border-radius: 45%; animation-duration: 21s; animation-delay: -8s; }
+    .blue h2 { font-size: clamp(48px, 7vw, 120px); line-height: .95; max-width: 12ch; }
+    .blue h2 .slices { --w: 2.6em; }
+    .awards { margin-top: clamp(50px, 7vw, 100px); border-top: 1px solid rgba(255,255,255,.35); }
+    .awards li { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 20px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+    .awards li span:first-child { font-family: var(--serif); font-weight: 300; font-size: clamp(22px, 2vw, 30px); letter-spacing: -.02em; line-height: 1.1; transition: transform .6s var(--ease); }
+    .awards li:hover span:first-child { transform: translateX(12px); }
+    .awards li span:nth-child(2) { opacity: .8; }
+
+    /* ── footer ── */
+    .footer { padding: clamp(40px, 5vw, 70px) clamp(16px, 2vw, 28px) 30px; background: var(--white); }
+    .footer__top { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+    .footer__top a { font-size: clamp(30px, 3vw, 46px); line-height: 1; transition: color .3s; }
+    .footer__top a:hover { color: var(--blue); }
+    .footer__top a em { font-style: italic; }
+    .footer__base { display: grid; grid-template-columns: auto 1fr auto auto; gap: 32px 60px; align-items: end; margin-top: clamp(160px, 22vw, 320px); font-size: 13px; }
+    .clock { display: flex; align-items: center; gap: 16px; }
+    .clock b { font-weight: 500; font-size: clamp(34px, 3vw, 46px); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .clock span { border: 1px solid var(--ink); border-radius: 50%; padding: 3px 12px; font-family: var(--serif); font-size: 16px; }
+    .footer__base address { font-style: normal; }
+    .footer__base div a { display: block; }
+    .footer__base div a:hover { color: var(--blue); }
+    .cursor { background: var(--blue); color: #fff; }
+
+    @media (max-width: 860px) {
+      .nav { grid-template-columns: 1fr auto; }
+      .nav__links { display: none; }
+      .hero__name { flex-direction: column; align-items: flex-start; }
+      .hero__name .caps { text-align: left; padding: 0; order: -1; margin-bottom: 14px; }
+      .rotator__item { white-space: normal; }
+      .hero__line .slices { display: none; }
+      .feature { min-height: auto; gap: 60px; }
+      .panel { grid-template-columns: 1fr 1fr 1fr; }
+      .panel__text { grid-column: 1 / -1; }
+      .grid { grid-template-columns: 1fr; }
+      .tile__cap { grid-template-columns: 1fr; }
+      .tile__cap .caps { grid-column: 1; grid-row: auto; text-align: left; }
+      .awards li { grid-template-columns: 1fr; gap: 6px; }
+      .footer__base { grid-template-columns: 1fr 1fr; }
+      .clock { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" aria-hidden="true">View</div>
+
+  <header class="nav">
+    <a href="#" class="nav__logo">Xygarathma</a>
+    <nav class="nav__links caps" aria-label="Primary"><a href="#work">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav>
+    <a href="contact.html" class="step">Let’s talk</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="fluid" aria-hidden="true"><span class="blob e1"></span><span class="blob e2"></span><span class="blob e3"></span></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="hero__name">
+      <h1 class="serif" data-split>Xygarathma</h1>
+      <p class="caps load" style="--d:.6s">Art director &amp; designer<br />[zai-ga-rath-ma]</p>
+    </div>
+    <p class="hero__line serif load" style="--d:.8s">
+      You can find my work
+      <a href="#work" class="slices is-idle" style="--img:url('../images/projecttbc.jpg')" aria-label="See my work"><i></i><i></i><i></i><span>See my work</span></a>
+      <br /><span class="rotator" aria-live="polite"><span class="rotator__item">in Apple stores worldwide</span></span>
+    </p>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="feature">
+    <div class="feature__bg" aria-hidden="true"><img src="../images/futurehuman.jpg" alt="" data-par /></div>
+    <div class="reveal">
+      <h2 class="serif">Brands, books, apps &amp; stages for thousands of people</h2>
+      <a href="#work" class="step step--dark">See the work</a>
+    </div>
+    <div class="panel reveal" style="--d:.15s">
+      <div class="panel__text">
+        <p class="caps">Featured project</p>
+        <h3 class="serif">A mood design brand with packaging and a companion app</h3>
+        <p class="caps">Mindvalley States</p>
+      </div>
+      <a href="https://www.xygarathma.com/states" class="thumb" data-cursor><img src="../images/states.jpg" alt="States kit" style="object-position:30% 50%" /></a>
+      <a href="https://www.xygarathma.com/states" class="thumb" data-cursor><img src="../images/states.jpg" alt="" style="object-position:62% 50%" /></a>
+      <a href="https://www.xygarathma.com/states" class="thumb" data-cursor><img src="../images/states.jpg" alt="" style="object-position:92% 50%" /></a>
+    </div>
+  </section>
+
+  <!-- WORK GRID -->
+  <main class="work" id="work">
+    <div class="work__head">
+      <h2 class="serif reveal">Selected work</h2>
+      <a href="playground.html" class="caps reveal">Playground</a>
+    </div>
+    <div class="grid">
+      <article class="tile reveal"><a href="https://www.xygarathma.com/states" class="tile__img" data-cursor><img src="../images/states.jpg" alt="States mood design kit" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">States</h3><p>A mood design brand with packaging and a companion app</p><span class="caps">Branding · Packaging · Experiential · Art direction</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/quests" class="tile__img" data-cursor><img src="../images/quests.jpg" alt="Mindvalley Quests covers" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Mindvalley Quests</h3><p>An online learning platform, Apple demo app, and airline entertainment feature</p><span class="caps">Cover design · Graphic design · Art direction · Set design</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/deepsummit" class="tile__img" data-cursor><img src="../images/deepsummit.jpg" alt="Deep Summit stage" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Deep Summit</h3><p>An event identity across stage, print and screens</p><span class="caps">Branding · Print · Event</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/wethemany" class="tile__img" data-cursor><img src="../images/wethemany.jpg" alt="We The Many book" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">We The Many</h3><p>A genealogy-based coffee table book</p><span class="caps">Editorial · Information design · Book design</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/omvana" class="tile__img" data-cursor><img src="../images/omvana.jpg" alt="OMVANA app" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">OMVANA</h3><p>A meditation and mindfulness app</p><span class="caps">Branding · Graphic design · UI</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/futurehuman" class="tile__img" data-cursor><img src="../images/futurehuman.jpg" alt="Future Human stage" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Future Human</h3><p>A conference experience for 10,000 attendees in Dubai, UAE</p><span class="caps">Print · Branding · Experiential design</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/xhaistudios" class="tile__img" data-cursor><img src="../images/xhai.jpg" alt="Xhai Studio" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Xhai Studio</h3><p>Cultural toy brand</p><span class="caps">Branding · Packaging · Social media</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/lebibistoys" class="tile__img" data-cursor><img src="../images/lebibi.jpg" alt="Lebibi’s Toys" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Lebibi’s Toys</h3><p>Cultural toy brand</p><span class="caps">Branding · Packaging · Social media</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/knowyournature" class="tile__img" data-cursor><img src="../images/knowyournature.jpg" alt="Know Your Nature" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Know Your Nature</h3><p>Cultural toy brand</p><span class="caps">Branding · Packaging · Social media</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/projecttbc" class="tile__img" data-cursor><img src="../images/projecttbc.jpg" alt="Project TBC" /><span class="step">View project</span></a>
+        <div class="tile__cap"><h3 class="serif">Project TBC</h3><p>Cultural toy brand</p><span class="caps">Branding · Packaging · Social media</span></div></article>
+    </div>
+  </main>
+
+  <!-- LILAC: SERVICES -->
+  <section class="lilac">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-20 610 C 220 560, 300 260, 520 300 S 760 720, 980 640 S 1260 180, 1460 240"/></svg>
+    <h2 class="serif reveal">The power of design &amp; storytelling to make brands unforgettable</h2>
+    <div class="lilac__img reveal" style="--d:.1s"><img src="../images/omvana.jpg" alt="" /></div>
+    <div class="tags reveal" style="--d:.2s">
+      <span class="step step--dark">Branding</span><span class="step step--dark">Art direction</span><span class="step step--dark">Experiential</span><span class="step step--dark">Digital &amp; UI</span><span class="step step--dark">Editorial</span>
+    </div>
+  </section>
+
+  <!-- BLUE: RECOGNITION -->
+  <section class="blue">
+    <div class="fluid" aria-hidden="true"><span class="blob f1"></span><span class="blob f2"></span></div>
+    <div class="grain" aria-hidden="true"></div>
+    <h2 class="serif reveal">Ten years of work <span class="slices is-idle" style="--img:url('../images/quests.jpg')" aria-hidden="true"><i></i><i></i><i></i></span> people remember.</h2>
+    <ul class="awards">
+      <li class="reveal"><span>Symbol Awards — Gold</span><span>Mindvalley creative team, as art director</span><span class="caps">Award</span></li>
+      <li class="reveal"><span>Apple Store experience</span><span>Mindvalley app, demoed on Apple Store devices worldwide</span><span class="caps">Feature</span></li>
+      <li class="reveal"><span>App Store feature</span><span>OMVANA, picked by Apple’s editorial team</span><span class="caps">Feature</span></li>
+      <li class="reveal"><span>11 Young Malaysians to Watch</span><span>SAYS — novelist &amp; multidisciplinary creative</span><span class="caps">Press</span></li>
+      <li class="reveal"><span>Best International Short Film</span><span>The Star Collector — Golden Sailing Award, Beijing Film Academy</span><span class="caps">Award</span></li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="about.html" class="serif">About me</a>
+      <a href="contact.html" class="serif"><em>Got a project?</em></a>
+    </div>
+    <div class="footer__base">
+      <div class="clock"><b id="clock">00:00:00</b><span>MYT</span></div>
+      <address>Kuala Lumpur, Malaysia<br />Working worldwide</address>
+      <div><a href="mailto:xygarathmadesign@gmail.com">xygarathmadesign@gmail.com</a><span>© <span id="year"></span> Xygarathma</span></div>
+      <div><a href="#">Behance</a><a href="#">LinkedIn</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll("[data-split]").forEach((el) => {
+      const t = el.textContent; el.setAttribute("aria-label", t); el.textContent = "";
+      [...t].forEach((c, i) => { const s = document.createElement("span"); s.className = "ch"; s.textContent = c; s.style.setProperty("--i", i); s.setAttribute("aria-hidden", "true"); el.appendChild(s); });
+    });
+
+    // live Malaysia clock, like Leeroy's Montréal one
+    const clock = document.getElementById("clock");
+    const fmt = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kuala_Lumpur", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+    const tick = () => (clock.textContent = fmt.format(new Date()));
+    tick(); setInterval(tick, 1000);
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // featured image parallax + lilac line drawing, both tied to scroll
+      const par = document.querySelector("[data-par]");
+      const lilac = document.querySelector(".lilac");
+      const path = lilac.querySelector("path");
+      const onScroll = () => {
+        const vh = window.innerHeight;
+        const r = par.parentElement.getBoundingClientRect();
+        par.style.setProperty("--par", `${Math.max(-5, Math.min(5, (r.top / vh) * -5))}%`);
+        const l = lilac.getBoundingClientRect();
+        const t = Math.min(Math.max((vh - l.top) / (vh + l.height * 0.6), 0), 1);
+        path.style.setProperty("--draw", 1 - t);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    } else {
+      document.querySelector(".lilac path").style.setProperty("--draw", 0);
+    }
+  </script>
+  <script src="common.js"></script>
+</body>
+</html>
