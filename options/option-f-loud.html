@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xygarathma — Option F: Loud</title>
+  <meta name="description" content="Xygarathma is an art director and designer with 10 years of experience shaping memorable brands, events and digital experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    /* Option F — P/Genesis (black, acid lime, condensed caps, chrome object, clocks)
+       + Dad Cam (multicolour words, serif letter swaps, shaped photos, rules)
+       + Zerouge (white & red, pixel image between words, spread-out tiny caps) */
+    :root {
+      --black: #0b0b0c; --lime: #e4ff1a; --pink: #ff6f91; --blue: #5aa9ff; --green: #7ee36b; --yellow: #ffd04a;
+      --red: #ee3124; --paper: #f7f5f0; --white: #fff;
+      --cond: "Archivo", "Arial Narrow", sans-serif;
+      --serif: "Bodoni Moda", "Didot", serif;
+      --sans: "Inter Tight", system-ui, sans-serif;
+    }
+    body { background: var(--black); color: var(--white); font-family: var(--sans); font-size: 15px; }
+    .cond { font-family: var(--cond); font-weight: 800; font-variation-settings: "wdth" 62; text-transform: uppercase; letter-spacing: -.01em; line-height: .84; }
+    .s { font-family: var(--serif); font-weight: 400; text-transform: none; }  /* serif letter swap */
+    .tiny { font-size: 12px; letter-spacing: .01em; }
+
+    /* ── header (P/Genesis) ── */
+    .top { color: var(--lime); }
+    .bar { display: grid; grid-template-columns: 1.2fr 1fr 1fr 2fr auto; align-items: center; gap: 20px; padding: 20px clamp(16px, 2.4vw, 34px) 14px; font-size: 13px; }
+    .logo { font-family: var(--sans); font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
+    .logo sup { font-size: .55em; }
+    .clock { font-variant-numeric: tabular-nums; }
+    .bar nav { display: flex; gap: clamp(20px, 3vw, 48px); justify-content: flex-end; }
+    .bar nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .burger { width: 30px; display: grid; gap: 6px; }
+    .burger i { height: 1.5px; background: currentColor; transition: transform .4s var(--ease); }
+    .burger:hover i:first-child { transform: translateX(-6px); }
+    .ticker { border-block: 1px solid var(--lime); padding: 8px 0; font-size: 13px; }
+    .ticker .marquee { mask-image: none; }
+    .ticker .marquee__track { gap: 28px; animation-duration: 38s; }
+
+    /* ── hero ── */
+    .hero { position: relative; color: var(--lime); padding: 18px clamp(16px, 2.4vw, 34px) 40px; overflow: hidden; }
+    .fit { display: block; width: max-content; white-space: nowrap; }
+    .hero__name { font-size: 22vw; overflow: hidden; padding-bottom: .02em; }     /* JS fits it to the full width */
+    .hero__name .ch { display: inline-block; transform: translateY(105%); transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 45ms + .1s); }
+    .is-loaded .hero__name .ch { transform: none; }
+    .hero__mid { display: grid; grid-template-columns: 1fr 2.6fr; gap: 24px; align-items: end; margin-top: 10px; }
+    .hero__info { display: grid; gap: 14px; font-size: 13px; line-height: 1.35; padding-bottom: .6vw; }
+    .hero__info .say { font-family: ui-monospace, monospace; letter-spacing: .06em; }
+    .hero__line { font-size: 11.4vw; text-align: right; }
+    .hero__rot { display: flex; align-items: center; gap: 2vw; margin-top: 1.2vw; }
+    .ring { flex: none; width: 7.5vw; aspect-ratio: 1; border: 1px solid var(--lime); border-radius: 50%; display: grid; place-items: center; }
+    .ring::after { content: ""; width: 46%; aspect-ratio: 1; border: 1.1vw solid var(--lime); border-radius: 50%; }
+    .dash { flex: 0 0 8vw; height: .9vw; background: var(--lime); }
+    .rotator { font-family: var(--serif); font-style: italic; font-size: clamp(34px, 6.6vw, 118px); line-height: 1.05; letter-spacing: -.02em; color: var(--c, var(--pink)); transition: color .3s; }
+    .rotator__item { white-space: nowrap; }
+    .rotator__item::after { content: "."; }
+    .star { position: absolute; right: clamp(16px, 2.4vw, 34px); bottom: 5%; width: 8.5vw; aspect-ratio: 1; color: var(--lime); animation: spin 16s linear infinite; }
+    @keyframes spin { to { rotate: 360deg; } }
+
+    /* chrome object + rotating badge */
+    .chrome-wrap { position: absolute; left: 31%; top: 58%; width: 15vw; aspect-ratio: 1; perspective: 900px; transform: translate(-50%, -50%) translate(var(--mx, 0), var(--my, 0)); transition: transform 1.2s var(--ease); z-index: 2; }
+    .chrome {
+      width: 100%; height: 100%; border-radius: 24%;
+      background:
+        radial-gradient(60% 50% at 30% 22%, rgba(255,255,255,.95), transparent 60%),
+        conic-gradient(from 0deg, #f3f3f3, #d8c9ff, #ffd2a6, #ffffff, #bdefff, #f6c5ff, #fff6b0, #f3f3f3);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.6), inset -14px -18px 40px rgba(120,90,200,.35), 0 40px 70px -30px rgba(0,0,0,.8);
+      animation: tumble 14s ease-in-out infinite alternate;
+    }
+    @keyframes tumble { 0% { transform: rotateX(18deg) rotateY(-28deg) rotateZ(14deg); } 100% { transform: rotateX(-16deg) rotateY(30deg) rotateZ(-10deg); } }
+    .badge { position: absolute; right: -14%; top: 34%; width: 44%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #1b1f6b, #0b0b0c 70%); box-shadow: 0 0 0 1px rgba(228,255,26,.25); display: grid; place-items: center; color: #fff; }
+    .badge svg.text { position: absolute; inset: 0; animation: spin 12s linear infinite; }
+    .badge svg.text text { font: 600 11px var(--sans); letter-spacing: .14em; fill: #fff; text-transform: uppercase; }
+    .badge .arrow { width: 32%; height: 32%; fill: none; stroke: #fff; stroke-width: 1.6; transition: transform .5s var(--ease); }
+    .badge:hover .arrow { transform: translateX(4px); }
+
+    /* ── statement (Dad Cam) ── */
+    .say-rows { padding: clamp(60px, 8vw, 110px) clamp(16px, 2.4vw, 34px) 30px; background: #121213; }
+    .srow { display: flex; align-items: center; justify-content: space-between; gap: 2vw; padding: 1.4vw 0; border-bottom: 1px solid rgba(255,255,255,.28); font-size: 7.2vw; line-height: 1; letter-spacing: -.035em; white-space: nowrap; }
+    .w-serif { font-family: var(--serif); font-weight: 400; }
+    .w-sans { font-family: var(--sans); font-weight: 400; letter-spacing: -.05em; }
+    .w-sans .s { font-style: normal; letter-spacing: -.02em; }
+    .pink { color: var(--pink); } .blue { color: var(--blue); } .green { color: var(--green); } .yellow { color: var(--yellow); }
+    .shot { position: relative; flex: 0 0 auto; width: 18vw; height: 6.2vw; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; clip-path: var(--clip); transition: transform 1.2s var(--ease); transform: scale(.6); }
+    .is-in .shot img, .shot.is-in img { transform: scale(1); }
+    .shot:hover img { transform: scale(1.04); }
+    .shot .handle { position: absolute; left: 50%; top: -1.8vw; translate: -50% 0; font: 500 12px var(--sans); letter-spacing: 0; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; background: #121213; white-space: nowrap; }
+    .srow--last { align-items: flex-end; }
+    .srow--last p { font-size: 15px; letter-spacing: 0; line-height: 1.5; white-space: normal; max-width: 32ch; color: #d9d9d9; }
+    .srow--last p b { color: #fff; font-weight: 600; }
+
+    /* ── work (Zerouge: white + red) ── */
+    .work { background: var(--paper); color: var(--red); padding: 0 0 clamp(60px, 8vw, 100px); }
+    .work__hero { position: relative; aspect-ratio: 16 / 6.4; overflow: hidden; }
+    .work__hero img { width: 100%; height: 100%; object-fit: cover; }
+    .labels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 12px clamp(16px, 2.4vw, 34px); font-size: 11px; text-transform: uppercase; letter-spacing: .02em; line-height: 1.25; }
+    .labels span:nth-child(5) { text-align: right; }
+    .headline { display: flex; align-items: center; justify-content: center; gap: 2vw; padding: clamp(60px, 9vw, 130px) 16px clamp(50px, 7vw, 100px); }
+    .headline .pre { font: 500 clamp(20px, 2.2vw, 32px)/1 var(--sans); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+    .headline .big { font-size: clamp(80px, 13vw, 210px); }
+    .headline .post { font: 500 clamp(20px, 2.2vw, 32px)/1.05 var(--sans); }
+    .pixel { position: relative; width: clamp(140px, 22vw, 340px); aspect-ratio: 1; isolation: isolate; background: var(--paper);
+      -webkit-mask: radial-gradient(circle at center, #000 62%, transparent 64%) 0 0 / 7px 7px; mask: radial-gradient(circle at center, #000 62%, transparent 64%) 0 0 / 7px 7px; }
+    .pixel img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.9) brightness(1.15); }
+    .pixel::after { content: ""; position: absolute; inset: 0; background: var(--red); mix-blend-mode: screen; }
+    .pixel { animation: driftp 4s ease-in-out infinite alternate; }
+    @keyframes driftp { to { translate: 0 -10px; } }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 4vw, 64px) 8px; padding: 0 8px; }
+    .tile__img { position: relative; display: block; aspect-ratio: 707 / 409; overflow: hidden; background: #e8e3da; }
+    .tile__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), filter .6s; }
+    .tile__img::after { content: ""; position: absolute; inset: 0; background: var(--c); mix-blend-mode: multiply; opacity: 0; transition: opacity .5s; }
+    .tile:hover .tile__img::after { opacity: .55; }
+    .tile:hover .tile__img img { transform: scale(1.04); filter: grayscale(1) contrast(1.2); }
+    .chip { position: absolute; right: 12px; top: 12px; z-index: 1; background: #fff; color: #111; font-size: 11px; padding: 3px 8px; border-radius: 3px; }
+    .tile__cap { display: grid; grid-template-columns: auto 1fr; gap: 2px 16px; padding: 14px 10px 0; color: #141414; }
+    .tile__cap .num { grid-row: 1 / span 3; font-family: var(--cond); font-weight: 800; font-variation-settings: "wdth" 62; font-size: clamp(36px, 3.4vw, 54px); line-height: .8; color: var(--c); }
+    .tile__cap h3 { font-family: var(--cond); font-weight: 800; font-variation-settings: "wdth" 62; text-transform: uppercase; font-size: clamp(26px, 2.3vw, 36px); line-height: .95; }
+    .tile__cap p { color: #444; }
+    .tile__cap .tiny { text-transform: uppercase; color: var(--c); font-weight: 600; margin-top: 4px; }
+    .tile:nth-child(5n+1) { --c: var(--red); } .tile:nth-child(5n+2) { --c: #e2337a; } .tile:nth-child(5n+3) { --c: #2f6bff; } .tile:nth-child(5n+4) { --c: #3aa63a; } .tile:nth-child(5n+5) { --c: #f0a400; }
+    .tagline { text-align: center; padding-top: clamp(60px, 8vw, 110px); }
+    .tagline .cond { font-size: clamp(34px, 4vw, 60px); }
+    .tagline p { font-size: 13px; color: #6b2b25; margin-top: 10px; }
+
+    /* ── want to see more (pink pop) ── */
+    .more { display: flex; align-items: center; justify-content: space-between; gap: 30px; background: var(--pink); color: var(--black); padding: clamp(40px, 5vw, 70px) clamp(16px, 2.4vw, 34px); overflow: hidden; }
+    .more .cond { font-size: clamp(64px, 10vw, 170px); }
+    .more a { flex: none; display: grid; place-items: center; width: clamp(120px, 13vw, 190px); aspect-ratio: 1; border-radius: 50%; background: var(--black); color: var(--pink); text-align: center; font-weight: 600; font-size: 14px; line-height: 1.2; transition: transform .6s var(--ease), background .3s, color .3s; }
+    .more a:hover { transform: rotate(-12deg) scale(1.05); background: var(--lime); color: var(--black); }
+
+    /* ── contact ── */
+    .contact { color: var(--lime); padding: clamp(60px, 8vw, 110px) clamp(16px, 2.4vw, 34px) 30px; }
+    .contact__big { font-size: 22vw; }
+    .contact__grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; margin-top: 40px; border-top: 1px solid var(--lime); padding-top: 30px; }
+    .contact__info { display: grid; gap: 22px; align-content: start; font-size: 14px; }
+    .contact__info a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+    .form label { display: grid; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .02em; }
+    .form label.full { grid-column: 1 / -1; }
+    .form input, .form textarea { font: inherit; font-size: 18px; text-transform: none; color: #fff; background: transparent; border: 0; border-bottom: 1px solid rgba(228,255,26,.5); padding: 8px 0; outline: none; transition: border-color .3s; }
+    .form textarea { min-height: 90px; resize: vertical; }
+    .form input:focus, .form textarea:focus { border-color: var(--lime); }
+    .form button { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 14px; font: 600 15px var(--sans); color: var(--black); background: var(--lime); border: 0; padding: 14px 26px; border-radius: 999px; cursor: pointer; transition: gap .4s var(--ease), background .3s; }
+    .form button:hover { gap: 22px; background: #fff; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; margin-top: 70px; font-size: 12px; color: rgba(228,255,26,.75); }
+    .cursor { background: var(--lime); color: var(--black); font-weight: 600; }
+
+    @media (max-width: 860px) {
+      .bar { grid-template-columns: 1fr auto; }
+      .bar .clock, .bar nav { display: none; }
+      .hero__mid { grid-template-columns: 1fr; }
+      .hero__info { order: 2; }
+      .hero__line { text-align: left; font-size: 16vw; }
+      .rotator__item { white-space: normal; }
+      .ring, .dash { display: none; }
+      .chrome-wrap { width: 30vw; top: 44%; left: 78%; }
+      .star { bottom: 3%; width: 14vw; }
+      .srow { font-size: 9vw; flex-wrap: wrap; white-space: normal; justify-content: flex-start; row-gap: 3vw; }
+      .shot { width: 34vw; height: 11.5vw; }
+      .shot .handle { top: -24px; }
+      .labels { grid-template-columns: 1fr 1fr; }
+      .labels span:nth-child(5) { text-align: left; }
+      .headline { flex-wrap: wrap; }
+      .grid { grid-template-columns: 1fr; }
+      .more { flex-direction: column; align-items: flex-start; }
+      .contact__grid, .form { grid-template-columns: 1fr; }
+      .foot { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- photo shapes from Dad Cam -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <clipPath id="c-bone" clipPathUnits="objectBoundingBox"><path d="M.12 0H.36Q.5.32.64 0H.88Q1 0 1 .2V.8Q1 1 .88 1H.64Q.5.68.36 1H.12Q0 1 0 .8V.2Q0 0 .12 0Z"/></clipPath>
+    <clipPath id="c-bow" clipPathUnits="objectBoundingBox"><path d="M.06 0H.94Q1 0 .99.12Q.86.5.99.88Q1 1 .94 1H.06Q0 1 .01.88Q.14.5.01.12Q0 0 .06 0Z"/></clipPath>
+    <clipPath id="c-flag" clipPathUnits="objectBoundingBox"><path d="M.04 0H.96Q1 0 .98.06L.86.5L.98.94Q1 1 .96 1H.04Q0 1 .02.94L.14.5L.02.06Q0 0 .04 0Z"/></clipPath>
+    <clipPath id="c-bubbles" clipPathUnits="objectBoundingBox"><path d="M.1 0A.1.5 0 0 0 .1 1H.9A.1.5 0 0 0 .9 0Z M.1 0Q.2-.06.3 0Q.4-.06.5 0Q.6-.06.7 0Q.8-.06.9 0 M.1 1Q.2 1.06.3 1Q.4 1.06.5 1Q.6 1.06.7 1Q.8 1.06.9 1"/></clipPath>
+  </svg>
+
+  <div class="cursor" aria-hidden="true">View</div>
+
+  <!-- HEADER -->
+  <header class="top">
+    <div class="bar">
+      <a href="#" class="logo">XYGARATHMA<sup>®</sup></a>
+      <span class="clock">Kuala Lumpur: <span data-clock="Asia/Kuala_Lumpur">00:00:00</span></span>
+      <span class="clock">Your time: <span data-clock="">00:00:00</span></span>
+      <nav aria-label="Primary"><a href="#work">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav>
+      <a href="#menu" class="burger" aria-label="Menu"><i></i><i></i></a>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="marquee"><div class="marquee__track">
+      <span>✺ In Apple stores worldwide</span><span>✺ 40,000 feet in the sky</span><span>✺ In medicine cabinets</span><span>✺ In bookstores</span><span>✺ In live event experiences</span><span>✺ Right here, actually</span>
+      <span>✺ In Apple stores worldwide</span><span>✺ 40,000 feet in the sky</span><span>✺ In medicine cabinets</span><span>✺ In bookstores</span><span>✺ In live event experiences</span><span>✺ Right here, actually</span>
+    </div></div></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="cond fit hero__name" data-fit data-split>Xygarathma</h1>
+    <div class="hero__mid">
+      <div class="hero__info load" style="--d:.5s">
+        <span class="say">[ZAI-GA-RATH-MA]</span>
+        <span>Art director &amp; designer<br />with 10 years of experience</span>
+        <span>Brands, events &amp;<br />digital experiences</span>
+      </div>
+      <p class="cond hero__line load" style="--d:.35s">You can find my work</p>
+    </div>
+    <div class="hero__rot load" style="--d:.6s">
+      <span class="ring" aria-hidden="true"></span><span class="dash" aria-hidden="true"></span>
+      <span class="rotator" aria-live="polite"><span class="rotator__item">in Apple stores worldwide</span></span>
+    </div>
+    <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-width="7"><path d="M50 0v100M0 50h100M14.6 14.6l70.8 70.8M85.4 14.6 14.6 85.4M30.9 3.8l38.2 92.4M69.1 3.8 30.9 96.2M3.8 30.9l92.4 38.2M96.2 30.9 3.8 69.1"/></g></svg>
+    <div class="chrome-wrap" data-depth="40" aria-hidden="false">
+      <div class="chrome" aria-hidden="true"></div>
+      <a href="#work" class="badge" aria-label="See my work">
+        <svg class="text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text><textPath href="#circ">See my work • See my work • See my work •</textPath></text></svg>
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m0 0-6-6m6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="say-rows">
+    <div class="srow reveal"><span class="w-serif">An</span><a href="#work" class="shot" style="--clip:url(#c-bone);color:var(--green)"><span class="handle">@omvana</span><img src="../images/omvana.jpg" alt="OMVANA" /></a><span class="w-sans pink">Art Direct<span class="s">o</span>r</span></div>
+    <div class="srow reveal"><span class="w-sans blue">&amp; Design<span class="s">e</span>r</span><a href="#work" class="shot" style="--clip:url(#c-bow);color:var(--yellow)"><span class="handle">@deep_summit</span><img src="../images/deepsummit.jpg" alt="Deep Summit" /></a><span class="w-serif">for Brands,</span></div>
+    <div class="srow reveal"><span class="w-serif">Books</span><a href="#work" class="shot" style="--clip:url(#c-flag);color:var(--pink)"><span class="handle">@we_the_many</span><img src="../images/wethemany.jpg" alt="We The Many" /></a><span class="w-sans green">Apps &amp; Stag<span class="s">e</span>s</span></div>
+    <div class="srow srow--last reveal"><span class="w-sans yellow">Worldwid<span class="s">e</span>!</span><p>An art director &amp; designer based in <b>Malaysia</b>, with 10 years of experience shaping memorable brands, events, and digital experiences.</p><a href="#work" class="shot" style="--clip:url(#c-bubbles);color:var(--blue)"><span class="handle">@future_human</span><img src="../images/futurehuman.jpg" alt="Future Human" /></a></div>
+  </section>
+
+  <!-- WORK -->
+  <main class="work" id="work">
+    <div class="work__hero"><img src="../images/projecttbc.jpg" alt="Mindvalley lanyards in bold pattern" /></div>
+    <div class="labels"><span>Built for<br />brands &amp; stages</span><span>Branding</span><span>Packaging</span><span>Or all three.</span><span>Xygarathma<br />selected work</span></div>
+    <div class="headline reveal">
+      <span class="pre">Not here</span>
+      <span class="cond big">To</span>
+      <span class="pixel" aria-hidden="true"><img src="../images/states.jpg" alt="" /></span>
+      <span class="cond big">Blend</span>
+      <span class="post">in, <br />actually.</span>
+    </div>
+
+    <div class="grid">
+      <article class="tile reveal"><a href="https://www.xygarathma.com/states" class="tile__img" data-cursor><span class="chip">Mindvalley</span><img src="../images/states.jpg" alt="States mood design kit" /></a>
+        <div class="tile__cap"><span class="num">01</span><h3>States</h3><p>A mood design brand with packaging and a companion app</p><span class="tiny">Branding • Packaging • Experiential design • Art direction</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/quests" class="tile__img" data-cursor><span class="chip">Apple demo app</span><img src="../images/quests.jpg" alt="Mindvalley Quests covers" /></a>
+        <div class="tile__cap"><span class="num">02</span><h3>Mindvalley Quests</h3><p>An online learning platform, Apple demo app, and airline entertainment feature</p><span class="tiny">Cover design • Graphic design • Art direction • Set design</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/deepsummit" class="tile__img" data-cursor><span class="chip">Event</span><img src="../images/deepsummit.jpg" alt="Deep Summit stage" /></a>
+        <div class="tile__cap"><span class="num">03</span><h3>Deep Summit</h3><p>Branding • Print • Event</p><span class="tiny">Branding • Print</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/wethemany" class="tile__img" data-cursor><span class="chip">Book</span><img src="../images/wethemany.jpg" alt="We The Many book" /></a>
+        <div class="tile__cap"><span class="num">04</span><h3>We The Many</h3><p>A genealogy-based coffee table book</p><span class="tiny">Editorial • Information design • Book design</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/omvana" class="tile__img" data-cursor><span class="chip">App Store feature</span><img src="../images/omvana.jpg" alt="OMVANA app" /></a>
+        <div class="tile__cap"><span class="num">05</span><h3>OMVANA</h3><p>A meditation and mindfulness app</p><span class="tiny">Branding • Graphic design • UI</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/futurehuman" class="tile__img" data-cursor><span class="chip">10,000 attendees</span><img src="../images/futurehuman.jpg" alt="Future Human stage" /></a>
+        <div class="tile__cap"><span class="num">06</span><h3>Future Human</h3><p>A conference experience for 10,000 attendees in Dubai, UAE</p><span class="tiny">Print • Branding • Experiential design</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/xhaistudios" class="tile__img" data-cursor><span class="chip">Toy brand</span><img src="../images/xhai.jpg" alt="Xhai Studio" /></a>
+        <div class="tile__cap"><span class="num">07</span><h3>Xhai Studio</h3><p>Branding • Packaging • Social Media</p><span class="tiny">Cultural toy brand</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/lebibistoys" class="tile__img" data-cursor><span class="chip">Toy brand</span><img src="../images/lebibi.jpg" alt="Lebibi’s Toys" /></a>
+        <div class="tile__cap"><span class="num">08</span><h3>Lebibi’s Toys</h3><p>Branding • Packaging • Social Media</p><span class="tiny">Cultural toy brand</span></div></article>
+      <article class="tile reveal"><a href="https://www.xygarathma.com/knowyournature" class="tile__img" data-cursor><span class="chip">Toy brand</span><img src="../images/knowyournature.jpg" alt="Know Your Nature" /></a>
+        <div class="tile__cap"><span class="num">09</span><h3>Know Your Nature</h3><p>Branding • Packaging • Social Media</p><span class="tiny">Cultural toy brand</span></div></article>
+      <article class="tile reveal" style="--d:.1s"><a href="https://www.xygarathma.com/projecttbc" class="tile__img" data-cursor><span class="chip">Soon</span><img src="../images/projecttbc.jpg" alt="Project TBC" /></a>
+        <div class="tile__cap"><span class="num">10</span><h3>Project TBC</h3><p>Branding • Packaging • Social Media</p><span class="tiny">Cultural toy brand</span></div></article>
+    </div>
+
+    <div class="tagline reveal"><p class="cond">Symbol Awards Gold. App Store featured.<br />In Apple stores worldwide.</p><p>Recognition from Symbol Awards, Apple, SAYS and the Beijing Film Academy.</p></div>
+  </main>
+
+  <!-- WANT TO SEE MORE -->
+  <section class="more">
+    <h2 class="cond reveal">Want to see m<span class="s">o</span>re?</h2>
+    <a href="playground.html">One-off &amp;<br />misc work →</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2 class="cond fit contact__big" data-fit>Let’s chat!</h2>
+    <div class="contact__grid">
+      <div class="contact__info">
+        <span>Kuala Lumpur: <span class="clock" data-clock="Asia/Kuala_Lumpur">00:00:00</span></span>
+        <a href="mailto:xygarathmadesign@gmail.com">xygarathmadesign@gmail.com</a>
+        <span><a href="#">Behance</a> — <a href="#">LinkedIn</a></span>
+      </div>
+      <form class="form" action="mailto:xygarathmadesign@gmail.com" method="post" enctype="text/plain">
+        <label>First name<input name="first" /></label>
+        <label>Last name<input name="last" /></label>
+        <label class="full">Email *<input name="email" type="email" required /></label>
+        <label class="full">Message *<textarea name="message" required></textarea></label>
+        <button type="submit">Submit <span aria-hidden="true">→</span></button>
+      </form>
+    </div>
+    <div class="foot"><span>© <span id="year"></span> Xygarathma</span><span>Art direction &amp; design</span><a href="#">Back to top ↑</a></div>
+  </section>
+
+  <script>
+    document.querySelectorAll("[data-split]").forEach((el) => {
+      const t = el.textContent; el.setAttribute("aria-label", t); el.textContent = "";
+      [...t].forEach((c, i) => { const s = document.createElement("span"); s.className = "ch"; s.textContent = c; s.style.setProperty("--i", i); s.setAttribute("aria-hidden", "true"); el.appendChild(s); });
+    });
+
+    // stretch the big condensed lines to the full width
+    const fit = () => document.querySelectorAll("[data-fit]").forEach((el) => {
+      el.style.fontSize = "100px";
+      const w = el.parentElement.clientWidth - parseFloat(getComputedStyle(el.parentElement).paddingLeft) - parseFloat(getComputedStyle(el.parentElement).paddingRight);
+      el.style.fontSize = `${100 * w / el.scrollWidth}px`;
+    });
+    fit(); (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
+    window.addEventListener("resize", fit);
+
+    // clocks (P/Genesis style)
+    const clocks = [...document.querySelectorAll("[data-clock]")].map((el) => [el, new Intl.DateTimeFormat("en-GB", { timeZone: el.dataset.clock || undefined, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })]);
+    const tick = () => clocks.forEach(([el, f]) => (el.textContent = f.format(new Date())));
+    tick(); setInterval(tick, 1000);
+
+    // each rotating phrase gets its own colour (Dad Cam)
+    const colors = ["#ff6f91", "#5aa9ff", "#7ee36b", "#ffd04a", "#e4ff1a", "#ffffff"];
+    const rot = document.querySelector(".rotator");
+    let n = 0;
+    new MutationObserver((muts) => { if (muts.some((m) => m.addedNodes.length)) rot.style.setProperty("--c", colors[++n % colors.length]); }).observe(rot, { childList: true });
+  </script>
+  <script src="common.js"></script>
+</body>
+</html>
